@@ -6,7 +6,6 @@ Testing Docker with mysql:5.7 and php:7.0-apache.
 ```
 $ git clone https://github.com/royboy5/docker-lamp.git myLamp
 $ cd myLamp
-$ docker-compose build
 $ docker-compose up -d
 ```
 
