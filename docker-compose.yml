@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lamp
+      MYSQL_USER: lamp
+      MYSQL_PASSWORD: lamp123
+
+  php-apache:
+    depends_on:
+      - db
+    image: php:7.0-apache
+    links:
+      - db
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      DB_HOST: db:3306
+      DB_PASSWORD: lamp123
+    volumes:
+      - "./public:/var/www/html:rw"
